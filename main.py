@@ -14,6 +14,7 @@ from nltk.stem.porter import PorterStemmer
 from pydantic import BaseModel, ValidationError
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler, LabelEncoder, MinMaxScaler
+from mangum import Mangum
 
 # Initializing the app constructor.
 app = FastAPI()
@@ -509,3 +510,5 @@ async def neural_networks_upload_file(file: UploadFile = File(...)):
             raise HTTPException(status_code=400, detail="Invalid JSON file")
     else:
         raise HTTPException(status_code=400, detail="Only CSV and JSON files are allowed")
+
+handler = Mangup(app)
